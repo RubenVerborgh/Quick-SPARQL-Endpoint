@@ -1,0 +1,11 @@
+PREFIX : <http://example.org/#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+:Person owl:equivalentClass foaf:Person.
+:name rdfs:subPropertyOf foaf:name.
+:Albert a :Person;
+        :name "Albert Einstein".
+:Alfred a :Person;
+        :name "Alfred Einstein".
