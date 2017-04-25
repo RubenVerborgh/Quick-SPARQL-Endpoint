@@ -1,6 +1,15 @@
 language: java
 script:
+  # Build endpoint
   - mvn assembly:single
+  # Start endpoint
+  - java -jar target/sparql-endpoint-*-jar-with-dependencies.jar test.ttl &
+  - sleep 10
+  # Execute and verify example query
+  - 'curl -X POST -H "Content-Type: application/sparql-query" --data "@test.sparql" http://localhost:3000/dataset/sparql -s > result.json'
+  - grep "Albert Einstein" result.json
+  # Stop endpoint
+  - kill %1
 cache:
   directories:
     - $HOME/.m2
