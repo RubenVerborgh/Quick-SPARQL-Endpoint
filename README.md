@@ -3,7 +3,7 @@ A quick SPARQL endpoint with reasoning, written in Java using Jena.
 
 ## Build
 ```
-mvn assembly:single
+mvn package assembly:single
 ```
 
 ## Run
