@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>be.ugent.itech</groupId>
+  <groupId>be.ugent.webdev</groupId>
   <artifactId>sparql-endpoint</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>SPARQL Endpoint</name>
@@ -30,7 +30,7 @@
         <artifactId>exec-maven-plugin</artifactId>
         <version>1.2.1</version>
         <configuration>
-          <mainClass>be.ugent.itech.sparqlendpoint.SparqlEndpoint</mainClass>
+          <mainClass>be.ugent.webdev.SparqlEndpoint</mainClass>
         </configuration>
       </plugin>
       <plugin>
@@ -40,7 +40,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>be.ugent.itech.sparqlendpoint.SparqlEndpoint</mainClass>
+              <mainClass>be.ugent.webdev.SparqlEndpoint</mainClass>
             </manifest>
           </archive>
         </configuration>
@@ -50,7 +50,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>be.ugent.itech.sparqlendpoint.SparqlEndpoint</mainClass>
+              <mainClass>be.ugent.webdev.SparqlEndpoint</mainClass>
             </manifest>
           </archive>
           <descriptorRefs>

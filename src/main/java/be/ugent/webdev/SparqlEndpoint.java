@@ -1,4 +1,4 @@
-package be.ugent.itech.sparqlendpoint;
+package be.ugent.webdev;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.HelpFormatter;
