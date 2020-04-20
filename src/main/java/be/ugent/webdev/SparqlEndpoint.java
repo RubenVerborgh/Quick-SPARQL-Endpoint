@@ -40,17 +40,16 @@ public class SparqlEndpoint {
 		}
 		if (arguments.hasOption("help")) {
 			final HelpFormatter formatter = new HelpFormatter();
-			formatter.setArgName("file.ttl");
-			formatter.printHelp("sparql-endpoint [file1.ttl [file2.ttl]]", options, true);
+			formatter.printHelp("sparql-endpoint [file1 [file2 ...]", options, true);
 			System.exit(1);
 		}
 		
 		// Load the files
 		final SparqlEndpoint endpoint = new SparqlEndpoint();
 		for (final String file : arguments.getArgs()) {
-			System.err.format("Reading Turtle file %s\n", file);
+			System.err.format("Reading file %s\n", file);
 			try {
-				endpoint.loadDataset(file, "TURTLE");
+				endpoint.loadDataset(file);
 			}
 			catch (Exception error) {
 				System.err.format("Could not load %s: %s\n", file, error.getMessage());
@@ -67,8 +66,8 @@ public class SparqlEndpoint {
 		model = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_RULE_INF);
 	}
 	
-	public void loadDataset(final String url, final String format) {
-		model.read(url, format);
+	public void loadDataset(final String url) {
+		model.read(url);
 	}
 	
 	public void start(final int port) {
