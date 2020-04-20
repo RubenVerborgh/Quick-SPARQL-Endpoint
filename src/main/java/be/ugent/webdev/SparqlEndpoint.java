@@ -41,8 +41,7 @@ public class SparqlEndpoint {
 		}
 		if (arguments.hasOption("help")) {
 			final HelpFormatter formatter = new HelpFormatter();
-			formatter.setArgName("file.ttl");
-			formatter.printHelp("sparql-endpoint [file1.ttl [file2.ttl]]", options, true);
+			formatter.printHelp("sparql-endpoint [file1 [file2 ...]", options, true);
 			System.exit(1);
 		}
 
