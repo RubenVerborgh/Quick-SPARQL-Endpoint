@@ -30,7 +30,6 @@ public class SparqlEndpoint {
 		final Options options = new Options();
 		options.addOption("h", "help", false, "prints this message");
 		options.addOption("p", "port", true, "launch the SPARQL endpoint on this port");
-		options.addOption("f", "format", true, "the format of the files. One of 'RDF/XML', 'N-TRIPLE', 'TURTLE' (or 'TTL') and 'N3'. Default 'TURTLE'");
 		CommandLine arguments = null;
 		try {
 			arguments = new PosixParser().parse(options, args, false);
@@ -44,16 +43,13 @@ public class SparqlEndpoint {
 			formatter.printHelp("sparql-endpoint [file1 [file2 ...]", options, true);
 			System.exit(1);
 		}
-
-		// Parse the file format
-		final String format = arguments.getOptionValue("format", "TURTLE").toUpperCase();
-
+		
 		// Load the files
 		final SparqlEndpoint endpoint = new SparqlEndpoint();
 		for (final String file : arguments.getArgs()) {
-			System.err.format("Reading %s file %s\n", format, file);
+			System.err.format("Reading file %s\n", file);
 			try {
-				endpoint.loadDataset(file, format);
+				endpoint.loadDataset(file);
 			}
 			catch (Exception error) {
 				System.err.format("Could not load %s: %s\n", file, error.getMessage());
@@ -70,8 +66,8 @@ public class SparqlEndpoint {
 		model = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_RULE_INF);
 	}
 	
-	public void loadDataset(final String url, final String format) {
-		model.read(url, format);
+	public void loadDataset(final String url) {
+		model.read(url);
 	}
 	
 	public void start(final int port) {
