@@ -30,6 +30,7 @@ public class SparqlEndpoint {
 		final Options options = new Options();
 		options.addOption("h", "help", false, "prints this message");
 		options.addOption("p", "port", true, "launch the SPARQL endpoint on this port");
+		options.addOption("f", "format", true, "the format of the files. One of 'RDF/XML', 'N-TRIPLE', 'TURTLE' (or 'TTL') and 'N3'. Default 'TURTLE'");
 		CommandLine arguments = null;
 		try {
 			arguments = new PosixParser().parse(options, args, false);
@@ -44,13 +45,16 @@ public class SparqlEndpoint {
 			formatter.printHelp("sparql-endpoint [file1.ttl [file2.ttl]]", options, true);
 			System.exit(1);
 		}
-		
+
+		// Parse the file format
+		final String format = arguments.getOptionValue("format", "TURTLE").toUpperCase();
+
 		// Load the files
 		final SparqlEndpoint endpoint = new SparqlEndpoint();
 		for (final String file : arguments.getArgs()) {
-			System.err.format("Reading Turtle file %s\n", file);
+			System.err.format("Reading %s file %s\n", format, file);
 			try {
-				endpoint.loadDataset(file, "TURTLE");
+				endpoint.loadDataset(file, format);
 			}
 			catch (Exception error) {
 				System.err.format("Could not load %s: %s\n", file, error.getMessage());
