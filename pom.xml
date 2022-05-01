@@ -5,6 +5,10 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>SPARQL Endpoint</name>
   <description>Standalone SPARQL endpoint</description>
+  <properties>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+  </properties>
   <dependencies>
     <dependency>
       <groupId>org.apache.jena</groupId>
